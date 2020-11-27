@@ -31,3 +31,17 @@ Route::get('/karyawan/laporan3', [KaryawanController::class, 'laporan3'])->name(
 
 Route::get('/karyawan/laporan/laporandetil/{id_keluhan}', [KaryawanController::class, 'laporandetil']);
 
+<<<<<<< HEAD
+=======
+// Bagian
+Route::get('/bagian', [BagianController::class, 'index'])
+Route::post('/bagian/store', [BagianController::class, 'store'])
+Route::put('/bagian/{id_bagian}/update', [BagianController::class, 'update'])
+Route::delete('bagian/{id_bagian}/delete', [BagianController::class, 'delete'])
+
+// Jenis Keluhan
+Route::get('/jenis-keluhan', [BagianController::class, 'index'])
+Route::post('/jenis-keluhan/store', [BagianController::class, 'store'])
+Route::put('/jenis-keluhan/{id_jenis_keluhan}/update', [BagianController::class, 'update'])
+Route::delete('bagian/{id_jenis_keluhan}/delete', [BagianController::class, 'delete'])
+>>>>>>> 89e30bd75db71627b64faba91e236ec518682d71
