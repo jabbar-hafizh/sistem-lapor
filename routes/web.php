@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporController;
 use App\Http\Controllers\KaryawanController;
@@ -32,10 +31,3 @@ Route::get('/karyawan/laporan3', [KaryawanController::class, 'laporan3'])->name(
 
 Route::get('/karyawan/laporan/laporandetil/{id_keluhan}', [KaryawanController::class, 'laporandetil']);
 
-
-
-
-Route::get('/index', [AdminController::class, 'index']);
-Route::get('/datausers', [AdminController::class, 'datausers']);
-Route::get('/profiladmin', [AdminController::class, 'profiladmin']);
-Route::get('/detildatalaporan/{id_report}', [AdminController::class, 'detail']);

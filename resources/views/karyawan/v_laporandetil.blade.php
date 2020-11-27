@@ -21,16 +21,40 @@
     <section class="content">
       <div class="card">
         <div class="card-body">
-            <form>
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group row">
-                    <img src="" class="img-fluid" alt="Responsive image">
+                    <label class="col-sm-4 col-form-label">Bukti Foto Keluhan</label>
+                    <div class="col-sm-8">
+                        <img src="" class="img-fluid" alt="Responsive image">
+                    </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nama Pelapor</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-4 col-form-label">Keluhan</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_keluhan}}">
+                    </div>
+                    <label class="col-sm-4 col-form-label">Penjelasan Keluhan</label>
+                    <div class="col-sm-8">
+                        <textarea rows="5" type="text" readonly class="form-control-plaintext" value="{{$karyawan->penjelasan_keluhan}}">{{$karyawan->penjelasan_keluhan}}</textarea>
+                    </div>
+                    <label class="col-sm-4 col-form-label">Nama Pelapor</label>
+                    <div class="col-sm-8">
                         <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_pengeluh}}">
-                        <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->id_karyawan_fk}}">
+                    </div>
+                    <label class="col-sm-4 col-form-label">Waktu</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->waktu_keluhan}}">
+                    </div>
+                    <label class="col-sm-4 col-form-label">No. Telepon</label>
+                    <div class="col-sm-8">
+                        <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->no_telp}}">
+                    </div>
+                    <label class="col-sm-4 col-form-label">Karyawan Petugas</label>
+                    <div class="col-sm-8">
                         <select class="form-control select2 @error('id_karyawan') is-invalid @enderror" style="width: 100%;" name="id_jenis_keluhan_fk">
+                            {{-- @if (has($karyawan->id_karyawan_fk))
+                                
+                            @endif --}}
                             <option></option>
                             @foreach ($karyawan2 as $data)
                             @if (old('id_karyawan') == $data->id_karyawan)
@@ -40,6 +64,9 @@
                             @endif
                             @endforeach
                         </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#"><button class="btn btn-primary">Kirim</button></a>
                     </div>
                 </div>
                 {{-- <div class="form-group row">
