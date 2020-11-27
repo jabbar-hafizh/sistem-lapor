@@ -23,8 +23,20 @@
     {{-- side menu --}}
     <nav class="mt-2" onclick="activeNavLink()">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" onclick="activeNavLink()">
-        <li class="nav-item active" onclick="activeNavLink()">
-          <a href="/pelapor/addkeluhan" class="nav-link" onclick="activeNavLink()">
+        <li class="nav-item active">
+          <a href="/bagian" class="nav-link">
+            <i class="fas fa-circle nav-icon"></i>
+            <p>Bagian</p>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="/jenis-keluhan" class="nav-link">
+            <i class="fas fa-circle nav-icon"></i>
+            <p>Jenis Keluhan</p>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="/pelapor/addkeluhan" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Lapor</p>
           </a>

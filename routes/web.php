@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporController;
 use App\Http\Controllers\KaryawanController;
@@ -32,10 +31,14 @@ Route::get('/karyawan/laporan3', [KaryawanController::class, 'laporan3'])->name(
 
 Route::get('/karyawan/laporan/laporandetil/{id_keluhan}', [KaryawanController::class, 'laporandetil']);
 
+// Bagian
+Route::get('/bagian', [BagianController::class, 'index'])
+Route::post('/bagian/store', [BagianController::class, 'store'])
+Route::put('/bagian/{id_bagian}/update', [BagianController::class, 'update'])
+Route::delete('bagian/{id_bagian}/delete', [BagianController::class, 'delete'])
 
-
-
-Route::get('/index', [AdminController::class, 'index']);
-Route::get('/datausers', [AdminController::class, 'datausers']);
-Route::get('/profiladmin', [AdminController::class, 'profiladmin']);
-Route::get('/detildatalaporan/{id_report}', [AdminController::class, 'detail']);
+// Jenis Keluhan
+Route::get('/jenis-keluhan', [BagianController::class, 'index'])
+Route::post('/jenis-keluhan/store', [BagianController::class, 'store'])
+Route::put('/jenis-keluhan/{id_jenis_keluhan}/update', [BagianController::class, 'update'])
+Route::delete('bagian/{id_jenis_keluhan}/delete', [BagianController::class, 'delete'])
