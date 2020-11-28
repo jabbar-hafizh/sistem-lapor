@@ -22,7 +22,7 @@
 <!-- Tempusdominus Bbootstrap 4 -->
 <link rel="stylesheet" href="{{asset('template')}}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 <!-- Select2 -->
-<link rel="stylesheet" href="{{asset('template')}}/plugins/select2/css/select2.min.css">
+
 <link rel="stylesheet" href="{{asset('template')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <!-- Bootstrap4 Duallistbox -->
 <link rel="stylesheet" href="{{asset('template')}}/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
@@ -30,3 +30,5 @@
 <link rel="stylesheet" href="{{asset('template')}}/dist/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
