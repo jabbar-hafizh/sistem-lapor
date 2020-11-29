@@ -6,6 +6,7 @@ use App\Http\Controllers\PelaporController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\JenisKeluhanController;
+use App\Http\Controllers\KaryawanMasterController;
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/pelapor/addkeluhan', [PelaporController::class, 'lapor'])->name('addkeluhan');
@@ -29,3 +30,7 @@ Route::get('/jenis-keluhan', [JenisKeluhanController::class, 'index']);
 Route::post('/jenis-keluhan/store', [JenisKeluhanController::class, 'store']);
 Route::put('/jenis-keluhan/{id_jenis_keluhan}/update', [JenisKeluhanController::class, 'update']);
 Route::delete('jenis-keluhan/{id_jenis_keluhan}/delete', [JenisKeluhanController::class, 'delete']);
+
+// karyawan master
+Route::get('/karyawan-master', [KaryawanMasterController::class, 'index']);
+Route::get('/karyawan-master/insert', [KaryawanMasterController::class, 'insertKaryawan'])->name('insert-karyawan-master');

@@ -36,6 +36,12 @@
           </a>
         </li>
         <li class="nav-item active">
+          <a href="/karyawan-master" class="nav-link">
+            <i class="fas fa-circle nav-icon"></i>
+            <p>Karyawan</p>
+          </a>
+        </li>
+        <li class="nav-item active">
           <a href="/pelapor/addkeluhan" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Lapor</p>
