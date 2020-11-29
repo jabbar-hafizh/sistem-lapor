@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Jenis Keluhan</h1>
           </div>
-          <div class="col-sm-9 right">
+          <div class="col-sm-9">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
               Tambah Jenis Keluhan
             </button>
@@ -57,7 +57,7 @@
                       data-id_jenis_keluhan="{{ $row->id_jenis_keluhan }}"
                       data-nama="{{ $row->nm_keluhan }}"
                       data-id_bagian=" $row->bagian->kd_bagian">
-                      <button class="btn btn-info">Edit</button>
+                      <button class="btn btn-info">Ubah</button>
                     </a>
                     <a
                       class="deleteJenisKeluhan"
