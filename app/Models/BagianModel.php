@@ -11,6 +11,7 @@ class BagianModel extends Model {
   protected $primaryKey = 'kd_bagian';
   public $incrementing = false;
   public $keyType = 'string';
+  public $timestamps = false;
 
   /**
    * Get the bagian for the blog jenis keluhan.

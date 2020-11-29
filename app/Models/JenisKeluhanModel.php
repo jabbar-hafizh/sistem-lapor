@@ -11,6 +11,7 @@ class JenisKeluhanModel extends Model {
   protected $primaryKey = 'id_jenis_keluhan';
   public $incrementing = false;
   protected $keyType = 'string';
+  public $timestamps = false;
 
   /**
  * Get the jenis keluhan that owns the bagian.
