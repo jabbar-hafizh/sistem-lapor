@@ -84,7 +84,7 @@ class JenisKeluhanController extends Controller
 
       try {
         $bagian = BagianModel::findOrFail($kodeBagian);
-        if (!$kodeBagian) return response()->json([
+        if (!$bagian) return response()->json([
           'status' => 404,
           'message' => 'Kode bagian tidak ditemukan'
         ]);

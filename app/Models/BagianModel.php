@@ -7,10 +7,10 @@ use App\Models\JenisKeluhanModel;
 
 class BagianModel extends Model {
   protected $table = 'bagian';
-  protected $fillable = ['nm_bagian'];
+  protected $fillable = ['nm_bagian', 'kd_bagian'];
   protected $primaryKey = 'kd_bagian';
   public $incrementing = false;
-  public $keyType = 'string';
+  protected $keyType = 'string';
   public $timestamps = false;
 
   /**
