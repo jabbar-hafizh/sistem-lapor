@@ -21,8 +21,8 @@
     </div>
 
     {{-- side menu --}}
-    <nav class="mt-2" onclick="activeNavLink()">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" onclick="activeNavLink()">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item active">
           <a href="/bagian" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
@@ -42,44 +42,12 @@
           </a>
         </li>
         <li class="nav-item active">
-          <a href="#" class="nav-link">
+          <a href="/karyawan/laporan" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Laporan</p>
-            <i class="right fas fa-angle-left"></i>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="/karyawan/laporan" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Baru</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="/karyawan/laporan2" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Laporan Diproses
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/karyawan/laporan3" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Ditangani</p>
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
     </nav>
   </div>
 </aside>
-
-<script>
-  function activeNavLink() {
-    $(".nav .nav-item a").on("click", function(){
-      $(this).closest('.nav-item').siblings().removeClass("active");
-      $(this).closest('.nav-item').addClass("active");
-    });
-  }
-</script>
