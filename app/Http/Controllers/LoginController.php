@@ -34,4 +34,13 @@ class LoginController extends Controller {
     // if failed login
     // return redirect('/');
   }
+
+  public function logout (Request $request) {
+    // Forget multiple keys...
+    $request->session()->forget(['nama_karyawan', 'id_karyawan', 'bagian']);
+
+    $request->session()->flush();
+
+    return redirect('/');
+  }
 }

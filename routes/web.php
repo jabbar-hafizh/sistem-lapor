@@ -35,6 +35,8 @@ Route::delete('jenis-keluhan/{id_jenis_keluhan}/delete', [JenisKeluhanController
 // Sign In
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/authenticate', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout']);
+
 // karyawan master
 Route::get('/karyawan-master', [KaryawanMasterController::class, 'index']);
 Route::get('/karyawan-master/insert', [KaryawanMasterController::class, 'insertKaryawan'])->name('insert-karyawan-master');

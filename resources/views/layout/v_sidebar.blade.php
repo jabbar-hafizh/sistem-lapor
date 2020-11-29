@@ -63,8 +63,11 @@
               </a>
             </li>
           @endif
+          <li class="nav-item">
+            <a href="/logout" class="btn btn-danger nav-link">Keluar</a>
+          </li>
         @else
-          {{ redirect('/') }}
+          <script>window.location = "/";</script>
         @endif
       </ul>
     </nav>
