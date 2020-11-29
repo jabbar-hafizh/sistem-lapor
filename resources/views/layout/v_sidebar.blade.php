@@ -24,7 +24,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item active">
-          <a href="/bagian" class="nav-link">
+          <a href="{{ url('bagian') }}" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Bagian</p>
           </a>

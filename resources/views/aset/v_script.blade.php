@@ -7,7 +7,7 @@
 <script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('template')}}/dist/js/demo.js"></script>
-
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 {{-- form pelapor --}}
 {{-- <!-- jQuery -->
 <script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
@@ -87,7 +87,7 @@
     $('#timepicker').datetimepicker({
       format: 'LT'
     })
-    
+
     //Bootstrap Duallistbox
     $('.duallistbox').bootstrapDualListbox()
 
