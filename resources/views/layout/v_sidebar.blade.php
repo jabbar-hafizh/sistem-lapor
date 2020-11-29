@@ -16,7 +16,7 @@
         <img src="{{asset('img')}}/admin.png" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="/profiladmin" class="d-block">Alexa Pierce</a>
+        <a href="/profiladmin" class="d-block">{{ session()->get('nama_karyawan') }}</a>
       </div>
     </div>
 
