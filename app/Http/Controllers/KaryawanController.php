@@ -39,4 +39,24 @@ class KaryawanController extends Controller
         ];
         return view('karyawan.v_laporandetil', $data);
     }
+
+    public function laporandetilbb($id_keluhan){
+        $data = [
+            'karyawan'=> $this->KaryawanModel->allDataLaporanDetilbb($id_keluhan),
+            'karyawan2'=> $this->KaryawanModel->allDataLaporanDetil2bb(),
+        ];
+        return view('karyawan.v_laporandetilbb', $data);
+    }
+
+
+    public function updatepetugas($id_keluhan){
+        $dataKeluhan = [
+            'id_karyawan_fk' => Request()->id_karyawan,
+            'status_keluhan' => 'Diproses',
+        ];
+
+
+        $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
+        return redirect()->route('laporan')->with('pesan_update_petugas','Karyawan Petugas Berhasil Diupdate!');
+    }
 }
