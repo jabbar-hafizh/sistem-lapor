@@ -1,6 +1,9 @@
-@extends('layout.v_template')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
-@section('content')
+@if(session()->get('bagian') !== 'Customer Service' || session()->get('bagian') !== 'Supervisor Customer Service')
+  <script>window.location = "/dashboard";</script>
+@else
+  @extends('layout.v_template')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+  @section('content')
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -168,7 +171,8 @@
     </section>
     <!-- /.content -->
   </div>
-@endsection
+  @endsection
+@endif
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script>

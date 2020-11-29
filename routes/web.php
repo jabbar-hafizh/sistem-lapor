@@ -7,6 +7,7 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\JenisKeluhanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\KaryawanMasterController;
 
 Route::get('/dashboard', [HomeController::class, 'home']);
 Route::get('/pelapor/addkeluhan', [PelaporController::class, 'lapor'])->name('addkeluhan');
@@ -14,10 +15,10 @@ Route::post('/pelapor/insertkeluhan', [PelaporController::class, 'insertKeluhan'
 
 
 Route::get('/karyawan/laporan', [KaryawanController::class, 'laporan'])->name('laporan');
-Route::get('/karyawan/laporan2', [KaryawanController::class, 'laporan2'])->name('laporan2');
-Route::get('/karyawan/laporan3', [KaryawanController::class, 'laporan3'])->name('laporan3');
 
 Route::get('/karyawan/laporan/laporandetil/{id_keluhan}', [KaryawanController::class, 'laporandetil']);
+Route::get('/karyawan/laporan/laporandetilbb/{id_keluhan}', [KaryawanController::class, 'laporandetilbb']);
+Route::put('/karyawan/laporan/laporandetilbb/updatepetugas/{id_keluhan}', [KaryawanController::class, 'updatepetugas']);
 
 // Bagian
 Route::get('/bagian', [BagianController::class, 'index']);
@@ -34,3 +35,6 @@ Route::delete('jenis-keluhan/{id_jenis_keluhan}/delete', [JenisKeluhanController
 // Sign In
 Route::get('/', [LoginController::class, 'index']);
 Route::post('/authenticate', [LoginController::class, 'authenticate']);
+// karyawan master
+Route::get('/karyawan-master', [KaryawanMasterController::class, 'index']);
+Route::get('/karyawan-master/insert', [KaryawanMasterController::class, 'insertKaryawan'])->name('insert-karyawan-master');

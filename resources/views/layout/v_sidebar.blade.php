@@ -21,65 +21,52 @@
     </div>
 
     {{-- side menu --}}
-    <nav class="mt-2" onclick="activeNavLink()">
+    <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item active">
-          <a href="{{ url('bagian') }}" class="nav-link">
-            <i class="fas fa-circle nav-icon"></i>
-            <p>Bagian</p>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="/jenis-keluhan" class="nav-link">
-            <i class="fas fa-circle nav-icon"></i>
-            <p>Jenis Keluhan</p>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="/pelapor/addkeluhan" class="nav-link">
-            <i class="fas fa-circle nav-icon"></i>
-            <p>Lapor</p>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a href="#" class="nav-link">
-            <i class="fas fa-circle nav-icon"></i>
-            <p>Laporan</p>
-            <i class="right fas fa-angle-left"></i>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
+        @if(session()->has('nama_karyawan') && session()->has('bagian'))
+          @if(session()->get('bagian') === 'Customer Service' || session()->get('Supervisor Customer Service'))
+            <li class="nav-item active">
+              <a href="{{ url('bagian') }}" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Bagian</p>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="/jenis-keluhan" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Jenis Keluhan</p>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="/karyawan-master" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Karyawan</p>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a href="/pelapor/addkeluhan" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Lapor</p>
+              </a>
+            </li>
+            <li class="nav-item active">
               <a href="/karyawan/laporan" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Baru</p>
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Laporan</p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
-              <a href="/karyawan/laporan2" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Laporan Diproses
-                </p>
+          @else
+            <li class="nav-item active">
+              <a href="/karyawan/laporan" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Laporan</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="/karyawan/laporan3" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Laporan Ditangani</p>
-              </a>
-            </li>
-          </ul>
-        </li>
+          @endif
+        @else
+          {{ redirect('/') }}
+        @endif
       </ul>
     </nav>
   </div>
 </aside>
-
-<script>
-  function activeNavLink() {
-    $(".nav .nav-item a").on("click", function(){
-      $(this).closest('.nav-item').siblings().removeClass("active");
-      $(this).closest('.nav-item').addClass("active");
-    });
-  }
-</script>
