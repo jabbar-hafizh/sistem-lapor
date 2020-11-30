@@ -84,7 +84,7 @@
     @foreach ($karyawan_m as $data)
       <div class="modal fade" id="delete{{$data->id_karyawan}}">
         <div class="modal-dialog">
-          <div class="modal-content bg-dark">
+          <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Hapus Data Karyawan</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -95,8 +95,8 @@
               <p>Apakah Anda Yakin Ingin Menghapus Data Karyawan Dengan Nama <strong>{{$data->nm_karyawan}}</strong> dan ID <strong>{{$data->id_karyawan}}</strong>?</p>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Tidak</button>
-              <a href="/karyawan-master/delete{{$data->id_karyawan}}" type="button" class="btn btn-outline-light">Ya</a>
+              <button type="button" class="btn btn-info" data-dismiss="modal">Tidak</button>
+              <a href="/karyawan-master/delete{{$data->id_karyawan}}" type="button" class="btn btn-danger">Ya</a>
             </div>
           </div>
           <!-- /.modal-content -->
