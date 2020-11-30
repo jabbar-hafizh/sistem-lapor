@@ -32,5 +32,9 @@ Route::put('/jenis-keluhan/{id_jenis_keluhan}/update', [JenisKeluhanController::
 Route::delete('jenis-keluhan/{id_jenis_keluhan}/delete', [JenisKeluhanController::class, 'delete']);
 
 // karyawan master
-Route::get('/karyawan-master', [KaryawanMasterController::class, 'index']);
-Route::get('/karyawan-master/insert', [KaryawanMasterController::class, 'insertKaryawan'])->name('insert-karyawan-master');
+Route::get('/karyawan-master', [KaryawanMasterController::class, 'index'])->name('karyawan-master');
+Route::get('/karyawan-master/add', [KaryawanMasterController::class, 'add'])->name('karyawan-add');
+Route::post('/karyawan-master/insert', [KaryawanMasterController::class, 'insertKaryawan'])->name('insert-karyawan-master');
+Route::get('/karyawan-master/edit/{id_karyawan}', [KaryawanMasterController::class, 'edit'])->name('karyawan-edit');
+Route::put('/karyawan-master/update/{id_karyawan}', [KaryawanMasterController::class, 'update'])->name('karyawan-update');
+Route::get('/karyawan-master/delete{id_karyawan}', [KaryawanMasterController::class, 'delete'])->name('karyawan-delete');
