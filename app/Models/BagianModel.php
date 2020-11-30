@@ -20,4 +20,9 @@ class BagianModel extends Model {
   {
     return $this->hasMany(JenisKeluhanModel::class, 'kd_bagian', 'kd_bagian_fk');
   }
+
+  public function karyawan()
+  {
+    return $this->hasMany(KaryawanModel::class, 'kd_bagian', 'kd_bagian_fk');
+  }
 }
