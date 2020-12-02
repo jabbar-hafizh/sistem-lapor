@@ -2,12 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <div class="sidebar">
     {{-- logo --}}
-    <a href="/" class="brand-link">
-      <img src="{{asset('img')}}/r-logo.jpg"
-          alt="AdminLTE Logo"
-          class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-      <span class="brand-text font-weight-light">Sistem Report</span>
+    <a href="/dashboard" class="brand-link">
+      <img src="{{asset('img')}}/logo-jnk-logo.png" alt="Logo Jasamarga" class="brand-image img-circle elevation-3">
+      <span class="brand-text font-weight-light" style="letter-spacing: 2px;"><strong>JASAMARGA</strong></span>
     </a>
 
     {{-- view user --}}
@@ -55,6 +52,12 @@
                 <p>Laporan</p>
               </a>
             </li>
+            <li class="nav-item active">
+              <a href="/penanganan" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Penanganan</p>
+              </a>
+            </li>
           @else
             <li class="nav-item active">
               <a href="/karyawan/laporan" class="nav-link">
@@ -63,6 +66,7 @@
               </a>
             </li>
           @endif
+          <br>
           <li class="nav-item">
             <a href="/logout" class="btn btn-danger nav-link">Keluar</a>
           </li>

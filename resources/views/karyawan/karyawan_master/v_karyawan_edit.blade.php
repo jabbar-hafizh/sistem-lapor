@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Password</label>
-                            <input type="text" class="form-control" id="" @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="Kosongkan jika tidak ingin ubah password">
+                            <input type="password" class="form-control" id="" @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="Kosongkan jika tidak ingin ubah password">
                             <div class="text-danger">
                                 @error('password')
                                     {{ $message }}

@@ -12,10 +12,10 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <h1>Jenis Keluhan</h1>
-          </div>
-          <div class="col-sm-9">
+          </div><br><br>
+          <div class="col-sm-12">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-modal">
               Tambah Jenis Keluhan
             </button>
@@ -29,16 +29,6 @@
 
       <!-- Default box -->
       <div class="card">
-        {{-- <div class="card-header">
-          <h3 class="card-title">Jenis Keluhan</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
-        </div> --}}
         <div class="card-body">
           <table class="display" id="jenis-keluhan-table">
             <thead>
