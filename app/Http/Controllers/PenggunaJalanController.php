@@ -54,7 +54,7 @@ class PenggunaJalanController extends Controller
             'no_telp' => Request()->no_telp,
         ];
 
-        $this->PelaporModel->addDataKeluhan($dataKeluhan);
+        $this->PenggunaJalanModel->addDataKeluhan($dataKeluhan);
         
 
 
@@ -70,7 +70,7 @@ class PenggunaJalanController extends Controller
             'status_keluhan' => 'Baru',
         ];
 
-        $this->PelaporModel->addDataDetilKeluhan($dataDetilKeluhan);
-        return redirect()->route('addkeluhan')->with('pesan_keluhan','Data Berhasil Dikirim!');
+        $this->PenggunaJalanModel->addDataDetilKeluhan($dataDetilKeluhan);
+        return redirect()->route('pengguna_jalan')->with('pesan_keluhan','Data Berhasil Dikirim!');
     }
 }

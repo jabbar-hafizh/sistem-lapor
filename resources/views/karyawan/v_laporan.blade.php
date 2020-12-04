@@ -40,6 +40,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
+          <a href="/export" class="btn btn-sm btn-primary">Excel</a><br><br>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>

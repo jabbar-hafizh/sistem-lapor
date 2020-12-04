@@ -62,4 +62,25 @@ class KaryawanModel extends Model
         ->where('id_keluhan', $id_keluhan)
         ->update($dataKeluhan);
     }
+
+
+    public function dataKeluhan(){
+        return DB::table('keluhan')
+        ->leftjoin('detil_keluhan', 'keluhan.id_keluhan', '=', 'detil_keluhan.id_keluhan_fk')
+        ->leftjoin('jenis_keluhan', 'detil_keluhan.id_jenis_keluhan_fk', '=', 'jenis_keluhan.id_jenis_keluhan')
+        ->leftjoin('karyawan', 'keluhan.id_karyawan_fk', '=', 'karyawan.id_karyawan')
+        ->orderBy('keluhan.waktu_keluhan', 'desc')
+        // ->where('status_keluhan', 'Baru')
+        ->select(
+            'nm_keluhan',
+            'penjelasan_keluhan',
+            'waktu_keluhan',
+            'nm_pengeluh',
+            'keluhan.no_telp as no_telp1',
+            'status_keluhan',
+            'nm_karyawan',
+            'karyawan.no_telp as no_telp2',
+            )
+        ->get();
+    }
 }

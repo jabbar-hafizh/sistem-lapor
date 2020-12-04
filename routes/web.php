@@ -57,5 +57,12 @@ Route::get('/karyawan-master/delete{id_karyawan}', [KaryawanMasterController::cl
 Route::get('/penanganan', [PenangananController::class, 'index']);
 
 // Pengguna Jalan
-Route::get('/pengguna_jalan', [PenggunaJalanController::class, 'index']);
+Route::get('/pengguna_jalan', [PenggunaJalanController::class, 'index'])->name('pengguna_jalan');
 Route::post('/pengguna_jalan/insertkeluhan', [PenggunaJalanController::class, 'insertKeluhan']);
+
+
+//
+// Route::resource('export', 'ExportController');
+
+// Export
+Route::get('/export', [KaryawanController::class, 'export']);

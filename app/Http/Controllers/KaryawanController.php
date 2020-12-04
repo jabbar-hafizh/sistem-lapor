@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KaryawanModel;
+use App\Exports\KeluhanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KaryawanController extends Controller
 {
@@ -72,5 +74,10 @@ class KaryawanController extends Controller
 
         $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
         return redirect()->route('laporan')->with('pesan_sudah_ditangani_petugas','Keluhan Sudah Ditangani!');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new KeluhanExport, 'Keluhan.xlsx');
     }
 }
