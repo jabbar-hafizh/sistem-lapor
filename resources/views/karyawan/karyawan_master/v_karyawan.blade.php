@@ -47,7 +47,6 @@
                     <th>No</th>
                     <th>ID Karyawan</th>
                     <th>Nama Karyawan</th>
-                    <th>Alamat</th>
                     <th>No. Telepon</th>
                     <th>Bagian</th>
                     <th>Aksi</th>
@@ -62,7 +61,6 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->id_karyawan}}</td>
                             <td>{{ $data->nm_karyawan}}</td>
-                            <td>{{ $data->alamat}}</td>
                             <td>{{ $data->no_telp}}</td>
                             <td>{{ $data->nm_bagian}}</td>
                             <td>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KaryawanModel;
+use App\Exports\KeluhanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KaryawanController extends Controller
 {
@@ -16,20 +18,6 @@ class KaryawanController extends Controller
             'karyawan'=> $this->KaryawanModel->allData(),
         ];
         return view('karyawan.v_laporan', $data);
-    }
-
-    public function laporan2(){
-        $data = [
-            'karyawan'=> $this->KaryawanModel->allData2(),
-        ];
-        return view('karyawan.v_laporan2', $data);
-    }
-
-    public function laporan3(){
-        $data = [
-            'karyawan'=> $this->KaryawanModel->allData3(),
-        ];
-        return view('karyawan.v_laporan3', $data);
     }
 
     public function laporandetil($id_keluhan){
@@ -58,5 +46,38 @@ class KaryawanController extends Controller
 
         $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
         return redirect()->route('laporan')->with('pesan_update_petugas','Karyawan Petugas Berhasil Diupdate!');
+    }
+
+    public function selesai($id_keluhan){
+        $dataKeluhan = [
+            'status_keluhan' => 'Selesai',
+        ];
+
+        $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
+        return redirect()->route('laporan')->with('pesan_selesai_petugas','Keluhan Berhasil Diselesaikan!');
+    }
+
+    public function ditangani($id_keluhan){
+        $dataKeluhan = [
+            'status_keluhan' => 'Ditangani',
+        ];
+
+        $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
+        return redirect()->route('laporan')->with('pesan_ditangani_petugas','Keluhan Ditangani!');
+    }
+
+    public function sudahditangani($id_keluhan){
+        $dataKeluhan = [
+            'penyelesaian_keluhan' => Request()->penyelesaian_keluhan,
+            'status_keluhan' => 'Sudah Ditangani',
+        ];
+
+        $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);
+        return redirect()->route('laporan')->with('pesan_sudah_ditangani_petugas','Keluhan Sudah Ditangani!');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new KeluhanExport, 'Keluhan.xlsx');
     }
 }
