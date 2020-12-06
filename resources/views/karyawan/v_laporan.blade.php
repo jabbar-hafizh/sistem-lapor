@@ -40,7 +40,18 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-body">
-          <a href="/export" class="btn btn-sm btn-primary">Excel</a><br><br>
+          <div class="form-group">
+          </div>
+          <form action="/export" class="form-group">
+            @php
+                $now = date("Y-m-d");
+            @endphp
+            <label for=""></label>
+            <input name="startdate" type="date" class="btn-sm" value="" min="2020-01-01" max="{{$now}}" required>
+            <label for="">-</label>
+            <input name="enddate" type="date" class="btn-sm" value="{{$now}}" min="2020-01-01" max="{{$now}}" required>
+            <button class="btn btn-sm btn-dark"><i class="fa fa-download"></i></button>
+          </form>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>

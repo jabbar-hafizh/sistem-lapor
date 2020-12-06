@@ -76,8 +76,10 @@ class KaryawanController extends Controller
         return redirect()->route('laporan')->with('pesan_sudah_ditangani_petugas','Keluhan Sudah Ditangani!');
     }
 
-    public function export() 
-    {
-        return Excel::download(new KeluhanExport, 'Keluhan.xlsx');
+    public function export(){
+        $startDate = Request()->startdate;
+        $endDate = Request()->enddate;
+        $this->KaryawanModel->dataKeluhan($startDate, $endDate);
+        return Excel::download(new KeluhanExport($startDate, $endDate), 'Keluhan.xlsx');
     }
 }

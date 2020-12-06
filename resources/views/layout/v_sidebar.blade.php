@@ -52,12 +52,6 @@
                 <p>Laporan</p>
               </a>
             </li>
-            <li class="nav-item active">
-              <a href="/penanganan" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Penanganan</p>
-              </a>
-            </li>
           @else
             <li class="nav-item active">
               <a href="/karyawan/laporan" class="nav-link">
