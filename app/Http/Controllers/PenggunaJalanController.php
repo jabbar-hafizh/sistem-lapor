@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\PelaporModel;
+use App\Models\PenggunaJalanModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
-class PelaporController extends Controller
+class PenggunaJalanController extends Controller
 {
     public function __construct(){
-        $this->PelaporModel = new PelaporModel();
+        $this->PenggunaJalanModel = new PenggunaJalanModel();
     }
 
-    public function lapor(){
+    public function index(){
         $data = [
-            'pelapor'=> $this->PelaporModel->allData(),
+            'jenis_keluhan'=> $this->PenggunaJalanModel->dataJenisKeluhan(),
         ];
-        return view('pelapor.v_lapor', $data);
+        return view('pengguna_jalan.v_pengguna_jalan', $data);
     }
 
     public function insertKeluhan(){
@@ -54,7 +54,7 @@ class PelaporController extends Controller
             'no_telp' => Request()->no_telp,
         ];
 
-        $this->PelaporModel->addDataKeluhan($dataKeluhan);
+        $this->PenggunaJalanModel->addDataKeluhan($dataKeluhan);
         
 
 
@@ -70,7 +70,7 @@ class PelaporController extends Controller
             'status_keluhan' => 'Baru',
         ];
 
-        $this->PelaporModel->addDataDetilKeluhan($dataDetilKeluhan);
-        return redirect()->route('addkeluhan')->with('pesan_keluhan','Data Berhasil Dikirim!');
+        $this->PenggunaJalanModel->addDataDetilKeluhan($dataDetilKeluhan);
+        return redirect()->route('pengguna_jalan')->with('pesan_keluhan','Data Berhasil Dikirim!');
     }
 }

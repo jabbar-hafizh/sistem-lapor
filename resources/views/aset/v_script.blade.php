@@ -1,12 +1,14 @@
 {{-- utama --}}
 <!-- jQuery -->
-<script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
+{{-- <script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('template')}}/dist/js/demo.js"></script>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> --}}
+
 
 {{-- form pelapor --}}
 {{-- <!-- jQuery -->
@@ -87,7 +89,7 @@
     $('#timepicker').datetimepicker({
       format: 'LT'
     })
-    
+
     //Bootstrap Duallistbox
     $('.duallistbox').bootstrapDualListbox()
 
@@ -104,5 +106,77 @@
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     });
 
+  })
+</script> --}}
+
+
+
+{{-- datatables --}}
+<!-- jQuery -->
+<script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="{{asset('template')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('template')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('template')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('template')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('template')}}/dist/js/demo.js"></script>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      "searching": true,
+
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+
+{{-- data toggle img --}}
+{{-- <!-- jQuery -->
+<script src="{{asset('template')}}/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="{{asset('template')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery UI -->
+<script src="{{asset('template')}}/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Ekko Lightbox -->
+<script src="{{asset('template')}}/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('template')}}/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{asset('template')}}/dist/js/demo.js"></script>
+<!-- Filterizr-->
+<script src="{{asset('template')}}/plugins/filterizr/jquery.filterizr.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
   })
 </script> --}}
