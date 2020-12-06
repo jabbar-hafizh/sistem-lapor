@@ -53,16 +53,9 @@ Route::get('/karyawan-master/edit/{id_karyawan}', [KaryawanMasterController::cla
 Route::put('/karyawan-master/update/{id_karyawan}', [KaryawanMasterController::class, 'update'])->name('karyawan-update');
 Route::get('/karyawan-master/delete{id_karyawan}', [KaryawanMasterController::class, 'delete'])->name('karyawan-delete');
 
-// Penanganan
-Route::get('/penanganan', [PenangananController::class, 'index']);
-
 // Pengguna Jalan
 Route::get('/pengguna_jalan', [PenggunaJalanController::class, 'index'])->name('pengguna_jalan');
 Route::post('/pengguna_jalan/insertkeluhan', [PenggunaJalanController::class, 'insertKeluhan']);
 
-
-//
-// Route::resource('export', 'ExportController');
-
-// Export
+// Export Excel pada v_laporan
 Route::get('/export', [KaryawanController::class, 'export']);

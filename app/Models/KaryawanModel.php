@@ -64,7 +64,7 @@ class KaryawanModel extends Model
     }
 
 
-    public function dataKeluhan(){
+    public function dataKeluhan($startDate, $endDate){
         return DB::table('keluhan')
         ->leftjoin('detil_keluhan', 'keluhan.id_keluhan', '=', 'detil_keluhan.id_keluhan_fk')
         ->leftjoin('jenis_keluhan', 'detil_keluhan.id_jenis_keluhan_fk', '=', 'jenis_keluhan.id_jenis_keluhan')
@@ -80,7 +80,9 @@ class KaryawanModel extends Model
             'status_keluhan',
             'nm_karyawan',
             'karyawan.no_telp as no_telp2',
-            )
+        )
+        ->where('waktu_keluhan', '>=', $startDate)
+        ->where('waktu_keluhan', '<=', $endDate)
         ->get();
     }
 }

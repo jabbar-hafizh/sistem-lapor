@@ -13,12 +13,16 @@ class KeluhanExport implements FromCollection, WithHeadings
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function __construct(){
+    public $startDate;
+    public $endDate;
+    public function __construct($startDate, $endDate){
         $this->KaryawanModel = new KaryawanModel();
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
     }
     public function collection()
     {
-        return $this->KaryawanModel->dataKeluhan();
+        return $this->KaryawanModel->dataKeluhan($this->startDate, $this->endDate);
     }
     public function headings(): array
     {
