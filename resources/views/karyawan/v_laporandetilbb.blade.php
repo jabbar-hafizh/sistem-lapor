@@ -256,6 +256,56 @@
                   </form>
               @endif
             @endif
+
+            {{-- Selesai --}}
+            @if(!in_array(session()->get('bagian'), $bagian))
+              @if ($karyawan->status_keluhan == 'Selesai')
+                <form action="" method="POST" enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Bukti Foto Keluhan</label>
+                        <div class="filtr-item col-sm-9" data-category="1" data-sort="white sample">
+                            <a href="{{ url('img/'.$karyawan->bukti_foto_keluhan) }}" data-toggle="lightbox" data-title="Bukti Foto Keluhan">
+                                <img src="{{ url('img/'.$karyawan->bukti_foto_keluhan) }}" class="img-fluid mb-2" alt="white sample"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Keluhan</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_keluhan}}">
+                        </div>
+                        <label class="col-sm-3 col-form-label">Penjelasan Keluhan</label>
+                        <div class="col-sm-9">
+                            <textarea rows="5" type="text" readonly class="form-control-plaintext" value="{{$karyawan->penjelasan_keluhan}}">{{$karyawan->penjelasan_keluhan}}</textarea>
+                        </div>
+                        <label class="col-sm-3 col-form-label">Nama Pelapor</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_pengeluh}}">
+                        </div>
+                        <label class="col-sm-3 col-form-label">Waktu</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->waktu_keluhan}}">
+                        </div>
+                        <label class="col-sm-3 col-form-label">No. Telepon</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->no_telp}}">
+                        </div>
+                        <label class="col-sm-3 col-form-label">Karyawan Petugas</label>
+                        <div class="col-sm-9">
+                            <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_karyawan}}">
+                        </div>
+                        @if ($karyawan->penyelesaian_keluhan !== null)
+                            <label class="col-sm-3 col-form-label">Penyelesaian</label>
+                            <div class="col-sm-9">
+                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->penyelesaian_keluhan}}">
+                            </div>
+                        @endif
+                    </div>
+                </form> 
+              @endif
+            @endif
         </div>
       </div>
     </section>

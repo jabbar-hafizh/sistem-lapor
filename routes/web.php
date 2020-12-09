@@ -59,3 +59,4 @@ Route::post('/pengguna_jalan/insertkeluhan', [PenggunaJalanController::class, 'i
 
 // Export Excel pada v_laporan
 Route::get('/export', [KaryawanController::class, 'export']);
+Route::get('/export2', [KaryawanController::class, 'export2']);
