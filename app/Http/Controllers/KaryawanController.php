@@ -81,7 +81,7 @@ class KaryawanController extends Controller
         $startDate = Request()->startdate;
         $endDate = Request()->enddate;
         $this->KaryawanModel->dataKeluhan($startDate, $endDate);
-        return Excel::download(new KeluhanExport($startDate, $endDate), 'Keluhan.xlsx');
+        return Excel::download(new KeluhanExport($startDate, $endDate), 'Laporan Keluhan '.date('d-m-Y').'.xlsx');
     }
 
     public function export2(){
@@ -89,6 +89,6 @@ class KaryawanController extends Controller
         $endDate = Request()->enddate;
         $namaKaryawan = Request()->namakaryawan;
         $this->KaryawanModel->dataKeluhan2($startDate, $endDate, $namaKaryawan);
-        return Excel::download(new KeluhanExport2($startDate, $endDate, $namaKaryawan), 'Keluhan.xlsx');
+        return Excel::download(new KeluhanExport2($startDate, $endDate, $namaKaryawan), 'Laporan Keluhan '.date('d-m-Y').'.xlsx');
     }
 }

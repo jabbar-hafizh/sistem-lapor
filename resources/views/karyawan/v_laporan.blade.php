@@ -45,7 +45,7 @@
           @if(session()->get('bagian') === 'Customer Service' || session()->get('bagian') === 'Supervisor Customer Service')
             <form action="/export" class="form-group">
               @php
-                  $now = date("Y-m-d");
+                $now = date("Y-m-d");
               @endphp
               <label for=""></label>
               <input name="startdate" type="date" class="btn-sm" value="" min="2020-01-01" max="{{$now}}" required>
