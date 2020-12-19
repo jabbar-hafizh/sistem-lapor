@@ -27,7 +27,9 @@ Route::put('/karyawan/laporan/laporandetilbb/updatepetugas/{id_keluhan}', [Karya
 Route::put('/karyawan/laporan/laporandetilbb/selesai/{id_keluhan}', [KaryawanController::class, 'selesai']);
 Route::put('/karyawan/laporan/laporandetilbb/ditangani/{id_keluhan}', [KaryawanController::class, 'ditangani']);
 Route::put('/karyawan/laporan/laporandetilbb/sudah-ditangani/{id_keluhan}', [KaryawanController::class, 'sudahditangani']);
-
+Route::post('/karyawan/laporan/filter-petugas', [KaryawanController::class, 'filterPetugas']);
+Route::put('/karyawan/laporan/ringan/selesai', [KaryawanController::class, 'ringanSelesai']);
+Route::put('/karyawan/laporan/berat/diproses', [KaryawanController::class, 'beratDiproses']);
 // Bagian
 Route::get('/bagian', [BagianController::class, 'index']);
 Route::post('/bagian/store', [BagianController::class, 'store']);
@@ -59,3 +61,4 @@ Route::post('/pengguna_jalan/insertkeluhan', [PenggunaJalanController::class, 'i
 
 // Export Excel pada v_laporan
 Route::get('/export', [KaryawanController::class, 'export']);
+Route::get('/export2', [KaryawanController::class, 'export2']);

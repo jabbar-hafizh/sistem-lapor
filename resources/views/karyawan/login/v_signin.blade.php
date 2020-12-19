@@ -21,9 +21,10 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-  <div class="login-logo">
-    <b>Lapor</b>Jasa Marga
-  </div>
+  <div class="login-logo" style="width: 10rem; text-align:center; margin: auto;">
+    <i class="fas"><img class="brand-image img card-img-top" src="{{asset('img')}}/logo-jnk.png" alt=""></i>
+    {{-- <b>Lapor</b>Jasa Marga --}}
+  </div><br>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">

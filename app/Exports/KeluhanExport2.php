@@ -8,21 +8,23 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class KeluhanExport implements FromCollection, WithHeadings
+class KeluhanExport2 implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public $startDate;
     public $endDate;
-    public function __construct($startDate, $endDate){
+    public $namaKaryawan;
+    public function __construct($startDate, $endDate, $namaKaryawan){
         $this->KaryawanModel = new KaryawanModel();
         $this->startDate = $startDate;
         $this->endDate = $endDate;
+        $this->namaKaryawan = $namaKaryawan;
     }
     public function collection()
     {
-        return $this->KaryawanModel->dataKeluhan($this->startDate, $this->endDate);
+        return $this->KaryawanModel->dataKeluhan2($this->startDate, $this->endDate, $this->namaKaryawan);
     }
     public function headings(): array
     {

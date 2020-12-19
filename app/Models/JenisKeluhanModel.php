@@ -7,17 +7,9 @@ use App\Models\BagianModel;
 
 class JenisKeluhanModel extends Model {
   protected $table = 'jenis_keluhan';
-  protected $fillable = ['nm_keluhan', 'kd_bagian_fk', 'id_jenis_keluhan'];
+  protected $fillable = ['nm_keluhan', 'id_jenis_keluhan'];
   protected $primaryKey = 'id_jenis_keluhan';
   public $incrementing = false;
   protected $keyType = 'string';
   public $timestamps = false;
-
-  /**
- * Get the jenis keluhan that owns the bagian.
- */
-  public function bagian()
-  {
-    return $this->belongsTo(BagianModel::class, 'kd_bagian_fk', 'kd_bagian');
-  }
 }
