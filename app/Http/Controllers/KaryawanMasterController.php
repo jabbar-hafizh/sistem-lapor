@@ -42,6 +42,7 @@ class KaryawanMasterController extends Controller
                 'alamat' => 'required|max:255',
                 'no_telp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:13',
                 'kd_bagian_fk' => 'required',
+                'shift' => 'required'
             ],
             [
                 'id_karyawan.required' => '*ID Karyawan harus diisi!',
@@ -50,7 +51,8 @@ class KaryawanMasterController extends Controller
                 'alamat.required' => '*Alamat harus diisi!',
                 'no_telp.required' => '*No. Telepon harus diisi!',
                 'kd_bagian_fk.required' => '*Silahkan pilih bagian!',
-                
+                'shift' => '*Shift harus diisi',
+
                 'id_karyawan.max' => '*ID Karyawan maksimal 36 karakter!',
                 'password.max' => '*Password maksimal 12 karakter!',
                 'nm_karyawan.max' => '*Nama Karyawan maksimal 50 karakter!',
@@ -73,6 +75,7 @@ class KaryawanMasterController extends Controller
             'alamat' => Request()->alamat,
             'no_telp' => Request()->no_telp,
             'kd_bagian_fk' => Request()->kd_bagian_fk,
+            'shift' => Request()->shift
         ];
 
         $this->KaryawanMasterModel->addDataKaryawan($dataKaryawan);
@@ -84,8 +87,6 @@ class KaryawanMasterController extends Controller
 
 
     public function update($id_karyawan){
-        
-
         if(Request()->password <> ""){
             Request()->validate(
                 [
@@ -95,6 +96,7 @@ class KaryawanMasterController extends Controller
                     'alamat' => 'required|max:255',
                     'no_telp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:13',
                     'kd_bagian_fk' => 'required',
+                    'shift' => 'required'
                 ],
                 [
                     'id_karyawan.required' => '*ID Karyawan harus diisi!',
@@ -103,13 +105,14 @@ class KaryawanMasterController extends Controller
                     'alamat.required' => '*Alamat harus diisi!',
                     'no_telp.required' => '*No. Telepon harus diisi!',
                     'kd_bagian_fk.required' => '*Silahkan pilih bagian!',
-                    
+                    'shift' => '*Shift harus diisi',
+
                     'id_karyawan.max' => '*ID Karyawan maksimal 36 karakter!',
                     'password.max' => '*Password maksimal 12 karakter!',
                     'nm_karyawan.max' => '*Nama Karyawan maksimal 50 karakter!',
                     'alamat.max' => '*Alamat maksimal 255 karakter!',
                     'no_telp.max' => '*Nomor Telepon maksimal 13 karakter!',
-    
+
                     'no_telp.regex' => '*Isi dengan nomor!',
                     'no_telp.min' => '*Nomor telepon minimal 8 karakter',
                     'password.min' => '*Password minimal 8 karakter',
@@ -123,6 +126,7 @@ class KaryawanMasterController extends Controller
                 'alamat' => Request()->alamat,
                 'no_telp' => Request()->no_telp,
                 'kd_bagian_fk' => Request()->kd_bagian_fk,
+                'shift' => Request()->shift
             ];
             $this->KaryawanMasterModel->updateDataKaryawan($id_karyawan, $dataKaryawan);
         } else {
@@ -133,6 +137,7 @@ class KaryawanMasterController extends Controller
                     'alamat' => 'required|max:255',
                     'no_telp' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:13',
                     'kd_bagian_fk' => 'required',
+                    'shift' => 'required'
                 ],
                 [
                     'id_karyawan.required' => '*ID Karyawan harus diisi!',
@@ -140,12 +145,13 @@ class KaryawanMasterController extends Controller
                     'alamat.required' => '*Alamat harus diisi!',
                     'no_telp.required' => '*No. Telepon harus diisi!',
                     'kd_bagian_fk.required' => '*Silahkan pilih bagian!',
-                    
+                    'shift' => '*Shift harus diisi',
+
                     'id_karyawan.max' => '*ID Karyawan maksimal 36 karakter!',
                     'nm_karyawan.max' => '*Nama Karyawan maksimal 50 karakter!',
                     'alamat.max' => '*Alamat maksimal 255 karakter!',
                     'no_telp.max' => '*Nomor Telepon maksimal 13 karakter!',
-    
+
                     'no_telp.regex' => '*Isi dengan nomor!',
                     'no_telp.min' => '*Nomor telepon minimal 8 karakter',
                 ]
@@ -157,12 +163,13 @@ class KaryawanMasterController extends Controller
                 'alamat' => Request()->alamat,
                 'no_telp' => Request()->no_telp,
                 'kd_bagian_fk' => Request()->kd_bagian_fk,
-            ];    
+                'shift' => Request()->shift
+            ];
             $this->KaryawanMasterModel->updateDataKaryawan($id_karyawan, $dataKaryawan);
         }
         return redirect()->route('karyawan-master')->with('pesan_update_karyawan','Data Berhasil Diubah!');
     }
-    
+
     public function delete($id_karyawan){
         $this->KaryawanMasterModel->deleteDataKaryawan($id_karyawan);
         return redirect()->route('karyawan-master')->with('pesan_delete_karyawan','Data Berhasil Dihapus!');

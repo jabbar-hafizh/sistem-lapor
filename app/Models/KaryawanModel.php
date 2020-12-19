@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class KaryawanModel extends Model
 {
     protected $table = 'karyawan';
-    protected $fillable = ['id_karyawan', 'nm_karyawan', 'alamat', 'no_telp', 'kd_bagian_fk', 'password'];
+    protected $fillable = ['id_karyawan', 'nm_karyawan', 'alamat', 'no_telp', 'kd_bagian_fk', 'password', 'shift'];
     protected $primaryKey = 'id_karyawan';
     public $incrementing = false;
     protected $keyType = 'string';

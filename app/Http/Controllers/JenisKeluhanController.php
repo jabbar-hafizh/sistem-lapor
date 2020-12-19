@@ -12,37 +12,23 @@ class JenisKeluhanController extends Controller
 {
     public function index(){
       $dataJenisKeluhan = JenisKeluhanModel::all();
-      $dataBagian = BagianModel::all();
       return view('karyawan.jenis-keluhan.v_jenis_keluhan', [
-        'dataJenisKeluhan' => $dataJenisKeluhan,
-        'dataBagian' => $dataBagian]);
+        'dataJenisKeluhan' => $dataJenisKeluhan
+      ]);
     }
 
     public function store(Request $request) {
       $namaKeluhan = Request()->nama_keluhan;
-      $kodeBagian = Request()->kode_bagian;
 
       if (!$namaKeluhan || gettype($namaKeluhan) !== 'string') return response()->json([
         'status' => 400,
         'message' => 'Nama keluhan tidak boleh string kosong'
       ]);
 
-      if (!$kodeBagian || gettype($kodeBagian) !== 'string') return response()->json([
-        'status' => 400,
-        'message' => 'Kode bagian tidak boleh string kosong'
-      ]);
-
       try {
-        $bagian = BagianModel::findOrFail($kodeBagian);
-        if (!$kodeBagian) return response()->json([
-          'status' => 404,
-          'message' => 'Kode bagian tidak ditemukan'
-        ]);
-
         $jenisKeluhan = JenisKeluhanModel::create([
           'id_jenis_keluhan' => Uuid::uuid4()->toString(),
-          'nm_keluhan' => $namaKeluhan,
-          'kd_bagian_fk' => $kodeBagian
+          'nm_keluhan' => $namaKeluhan
         ]);
       } catch (Exception $e) {
         return response()->json([
@@ -60,7 +46,6 @@ class JenisKeluhanController extends Controller
     public function update($id_jenis_keluhan, Request $request) {
       $idJenisKeluhan = Request()->id_jenis_keluhan;
       $namaKeluhan = Request()->nama_keluhan;
-      $kodeBagian = Request()->kode_bagian;
 
       if (!$id_jenis_keluhan) return response()->json([
         'status' => 400,
@@ -77,18 +62,7 @@ class JenisKeluhanController extends Controller
         'message' => 'Nama keluhan tidak boleh string kosong'
       ]);
 
-      if (!$kodeBagian || gettype($kodeBagian) !== 'string') return response()->json([
-        'status' => 400,
-        'message' => 'Kode bagian tidak boleh string kosong'
-      ]);
-
       try {
-        $bagian = BagianModel::findOrFail($kodeBagian);
-        if (!$bagian) return response()->json([
-          'status' => 404,
-          'message' => 'Kode bagian tidak ditemukan'
-        ]);
-
         $jenisKeluhan = JenisKeluhanModel::findOrFail($id_jenis_keluhan);
         if (!$jenisKeluhan) return response()->json([
           'status' => 404,
@@ -96,7 +70,6 @@ class JenisKeluhanController extends Controller
         ]);
 
         $jenisKeluhan->nm_keluhan = $namaKeluhan;
-        $jenisKeluhan->kd_bagian_fk = $kodeBagian;
 
         $jenisKeluhan->save();
       } catch (Exception $e) {
