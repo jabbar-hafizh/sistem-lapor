@@ -74,7 +74,7 @@ class KaryawanController extends Controller
   public function sudahditangani($id_keluhan){
       $dataKeluhan = [
           'penyelesaian_keluhan' => Request()->penyelesaian_keluhan,
-          'status_keluhan' => 'Sudah Ditangani',
+          'status_keluhan' => 'Selesai'
       ];
 
       $this->KaryawanModel->updatePetugas($id_keluhan, $dataKeluhan);

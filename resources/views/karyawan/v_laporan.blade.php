@@ -65,7 +65,7 @@
               <label for="">-</label>
               <input name="enddate" type="date" class="btn-sm" value="{{$now}}" min="2020-01-01" max="{{$now}}" required>
               <button class="btn btn-sm btn-dark"><i class="fa fa-download"></i></button>
-            </form>   
+            </form>
             {{-- @endif --}}
           @endif
           <table id="example1" class="table table-bordered table-striped">
@@ -84,7 +84,7 @@
                 $no = 1;
               @endphp
               @foreach ($karyawan as $data)
-                @if(session()->get('bagian') === 'Customer Service' || session()->get('bagian') === 'Supervisor Customer Service')
+                @if(session()->get('bagian') === 'Supervisor Customer Service')
                   <tr>
                     <td>{{ $no++ }}</td>
                     <td>{{ $data->nm_pengeluh}}</td>
@@ -98,7 +98,7 @@
                     @elseif ($data->status_keluhan == 'Diproses')
                       <td><span class="btn btn-success" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
                       <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary" disabled>Detail</button></a>
                       </td>
                     @elseif ($data->status_keluhan == 'Ditangani')
                       <td><span class="btn btn-secondary" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
@@ -126,7 +126,7 @@
                       <td>{{ $data->nm_pengeluh}}</td>
                       <td>{{ $data->nm_keluhan}}</td>
                       <td>{{ $data->waktu_keluhan}}</td>
-                      @if ($data->status_keluhan == 'Baru')
+                    @if ($data->status_keluhan == 'Baru')
                       <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
                       <td>
                         <a href="/karyawan/laporan/laporandetil/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>

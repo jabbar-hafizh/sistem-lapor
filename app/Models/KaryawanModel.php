@@ -80,6 +80,8 @@ class KaryawanModel extends Model
             'status_keluhan',
             'nm_karyawan',
             'karyawan.no_telp as no_telp2',
+            'tingkat_keluhan',
+            'shift'
         )
         ->where('waktu_keluhan', '>=', $startDate)
         ->where('waktu_keluhan', '<=', $endDate)
@@ -102,6 +104,8 @@ class KaryawanModel extends Model
             'status_keluhan',
             'nm_karyawan',
             'karyawan.no_telp as no_telp2',
+            'tingkat_keluhan',
+            'shift'
         )
         ->where('waktu_keluhan', '>=', $startDate)
         ->where('waktu_keluhan', '<=', $endDate)

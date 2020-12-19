@@ -33,8 +33,10 @@ class KeluhanExport implements FromCollection, WithHeadings
             'Nama Pengguna Jalan',
             'No. Telepon Pengguna Jalan',
             'Status',
-            'Nama Karyawan Petugas',
-            'No. Telepon Karyawan Petugas',
+            'Nama Petugas',
+            'No. Telepon Petugas',
+            'Tingkat Keluhan',
+            'Shift'
         ];
     }
 

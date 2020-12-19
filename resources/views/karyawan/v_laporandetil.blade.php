@@ -77,7 +77,7 @@
             </div>
             <br>
             <div class="col-sm-12">
-              <button class="btn btn-primary btnSelesai" type="button" id="btnSelesai">Selesai</button>
+              <button class="btn btn-dark btnSelesai" type="button" id="btnSelesai">Selesai</button>
             </div>
           </div>
 

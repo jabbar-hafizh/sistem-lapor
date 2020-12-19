@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-5">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/karyawan/laporan"><button class="btn btn-dark">Kembali</button></a></li>
+                  <li class="breadcrumb-item"><a href="/karyawan/laporan"><button class="btn btn-dark">Kembali</button></a></li>
                 </ol>
             </div>
         </div>
@@ -37,7 +37,7 @@
           @php
             $bagian = array('Supervisor Customer Service')
           @endphp
-          @if(in_array(session()->get('bagian'), $bagian))
+          <!-- @if(in_array(session()->get('bagian'), $bagian))
             {{-- jika belum ada penyelesaian --}}
             @if ($karyawan->penyelesaian_keluhan === null)
                 <form action="/karyawan/laporan/laporandetilbb/updatepetugas/{{$karyawan->id_keluhan}}" method="POST" enctype="multipart/form-data">
@@ -93,11 +93,11 @@
                     </div>
                 </form>
             @endif
-          @endif
+          @endif -->
 
             {{-- jika sudah ada penyelesaian dan ingin merubah status menjadi selesai --}}
             @if(in_array(session()->get('bagian'), $bagian))
-              @if ($karyawan->penyelesaian_keluhan !== null)
+              @if ($karyawan->penyelesaian_keluhan !== null && $karyawan->status_keluhan === 'Selesai')
                   <form action="/karyawan/laporan/laporandetilbb/selesai/{{$karyawan->id_keluhan}}" method="POST" enctype="multipart/form-data">
                       @method('PUT')
                       @csrf
@@ -141,69 +141,14 @@
                               </div>
                           @endif
                       </div>
-                      <div class="form-group row">
-                          <div class="col-sm-12">
-                              <button class="btn btn-dark">Selesai</button>
-                          </div>
-                      </div>
                   </form>
               @endif
-            @endif
-
-            {{-- diproses ditangani --}}
-            @if(!in_array(session()->get('bagian'), $bagian))
-                {{-- dan jika statusnya adalah diproses --}}
-                @if ($karyawan->status_keluhan == 'Diproses')
-                    <form action="/karyawan/laporan/laporandetilbb/ditangani/{{$karyawan->id_keluhan}}" method="POST" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Bukti Foto Keluhan</label>
-                            <div class="filtr-item col-sm-9" data-category="1" data-sort="white sample">
-                                <a href="{{ url('img/'.$karyawan->bukti_foto_keluhan) }}" data-toggle="lightbox" data-title="Bukti Foto Keluhan">
-                                    <img src="{{ url('img/'.$karyawan->bukti_foto_keluhan) }}" class="img-fluid mb-2" alt="white sample"/>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Keluhan</label>
-                            <div class="col-sm-9">
-                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_keluhan}}">
-                            </div>
-                            <label class="col-sm-3 col-form-label">Penjelasan Keluhan</label>
-                            <div class="col-sm-9">
-                                <textarea rows="5" type="text" readonly class="form-control-plaintext" value="{{$karyawan->penjelasan_keluhan}}">{{$karyawan->penjelasan_keluhan}}</textarea>
-                            </div>
-                            <label class="col-sm-3 col-form-label">Nama Pelapor</label>
-                            <div class="col-sm-9">
-                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_pengeluh}}">
-                            </div>
-                            <label class="col-sm-3 col-form-label">Waktu</label>
-                            <div class="col-sm-9">
-                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->waktu_keluhan}}">
-                            </div>
-                            <label class="col-sm-3 col-form-label">No. Telepon</label>
-                            <div class="col-sm-9">
-                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->no_telp}}">
-                            </div>
-                            <label class="col-sm-3 col-form-label">Karyawan Petugas</label>
-                            <div class="col-sm-9">
-                                <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->nm_karyawan}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <button class="btn btn-info">Tangani</button>
-                            </div>
-                        </div>
-                    </form>
-                @endif
             @endif
 
             {{-- ditangani sudah ditangani --}}
             {{-- dan jika statusnya adalah ditangani --}}
             @if(!in_array(session()->get('bagian'), $bagian))
-              @if ($karyawan->status_keluhan == 'Ditangani')
+              @if ($karyawan->status_keluhan == 'Diproses')
                   <form action="/karyawan/laporan/laporandetilbb/sudah-ditangani/{{$karyawan->id_keluhan}}" method="POST" enctype="multipart/form-data">
                       @method('PUT')
                       @csrf
@@ -247,7 +192,7 @@
                       </div>
                       <div class="form-group row">
                           <div class="col-sm-12">
-                              <button class="btn btn-danger">Sudah Ditangani</button>
+                              <button class="btn btn-dark">Selesai</button>
                           </div>
                       </div>
                   </form>
