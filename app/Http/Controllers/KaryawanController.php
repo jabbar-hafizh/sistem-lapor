@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KaryawanModel;
 use App\Exports\KeluhanExport;
+use App\Exports\KeluhanExport2;
 use Maatwebsite\Excel\Facades\Excel;
 
 class KaryawanController extends Controller
@@ -80,6 +81,14 @@ class KaryawanController extends Controller
         $startDate = Request()->startdate;
         $endDate = Request()->enddate;
         $this->KaryawanModel->dataKeluhan($startDate, $endDate);
-        return Excel::download(new KeluhanExport($startDate, $endDate), 'Keluhan.xlsx');
+        return Excel::download(new KeluhanExport($startDate, $endDate), 'Laporan Keluhan '.date('d-m-Y').'.xlsx');
+    }
+
+    public function export2(){
+        $startDate = Request()->startdate;
+        $endDate = Request()->enddate;
+        $namaKaryawan = Request()->namakaryawan;
+        $this->KaryawanModel->dataKeluhan2($startDate, $endDate, $namaKaryawan);
+        return Excel::download(new KeluhanExport2($startDate, $endDate, $namaKaryawan), 'Laporan Keluhan '.date('d-m-Y').'.xlsx');
     }
 }

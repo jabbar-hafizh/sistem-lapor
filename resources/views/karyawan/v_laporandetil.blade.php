@@ -69,7 +69,38 @@
                             @endif
                             @endforeach
                         </select>
-                    </div><br>
+                    </div>
+                    {{-- @php
+                        $ringan = 'Ringan';
+                        $berat = 'Berat';
+                    @endphp
+                    <label class="col-sm-3 col-form-label">Tingkat Keluhan</label>
+                    <div class="col-sm-9">
+                        <select class="form-control select2 style="width: 100%;" name="a" required>
+                            <option value="ringan">Ringan</option>
+                            <option value="berat">Berat</option>
+                            {{-- @if (('a') === 'ringan')
+                            <input type="text">
+                            @endif --}}
+                           
+                        {{-- </select>
+                        @switch('a')
+                        @case('a' === 'ringan')
+                            <select name="ringann" id="">
+                                <option value="">spv</option>
+                            </select>
+                            @break
+                        @case('a' !== 'ringan')
+                            <select name="beratt" class="form-control select2 style="width: 100%;" id="">
+                                <option value="">manager</option>
+                                <option value="">manager</option>
+                            </select>
+                            @break
+                        @default
+                            
+                    @endswitch --}}
+                    </div> --}}
+                    <br>
                     <div class="col-sm-12">
                         <button class="btn btn-primary">Kirim</button>
                     </div>
