@@ -20,7 +20,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/karyawan-master"><button class="btn btn-dark">Kembali</button></a></li>
                 </ol>
-            </div>  
+            </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -74,17 +74,27 @@
                         <div class="form-group">
                             <label class="col-form-label">Bagian</label>
                             <select class="form-control select2 @error('kd_bagian_fk') is-invalid @enderror" style="width: 100%;" name="kd_bagian_fk">
-                                <option value="{{$karyawan_m->kd_bagian}}">{{$karyawan_m->nm_bagian}}</option>
-                                @foreach ($karyawan_m2 as $data)
-                                @if (old('kd_bagian_fk') == $data->kd_bagian)
-                                    <option value="{{ $data->kd_bagian }}" selected>{{ $data->nm_bagian }}</option>
-                                @else
-                                    <option value="{{ $data->kd_bagian }}">{{ $data->nm_bagian }}</option>
-                                @endif
-                                @endforeach
+                              <option disabled selected>Silahkan pilih bagian</option>
+                              @foreach ($karyawan_m2 as $data)
+                                <option value="{{ $data->kd_bagian }}" <?php echo $karyawan_m->kd_bagian_fk == $data->kd_bagian ? 'selected' : '' ?>>{{ $data->nm_bagian }}</option>
+                              @endforeach
                             </select>
                             <div class="text-danger">
-                                @error('kd_bagian_fk')
+                              @error('kd_bagian_fk')
+                                {{ $message }}
+                              @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Shift</label>
+                            <select class="form-control select2" @error('shift') is-invalid @enderror style="width: 100%;" name="shift">
+                              <option disabled selected>Silahkan pilih Shift</option>
+                              <option value="1" <?php echo $karyawan_m->shift == 1 ? 'selected' : '' ?>>1</option>
+                              <option value="2" <?php echo $karyawan_m->shift == 2 ? 'selected' : '' ?>>2</option>
+                              <option value="3" <?php echo $karyawan_m->shift == 3 ? 'selected' : '' ?>>3</option>
+                            </select>
+                            <div class="text-danger">
+                                @error('shift')
                                     {{ $message }}
                                 @enderror
                             </div>

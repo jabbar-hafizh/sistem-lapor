@@ -20,7 +20,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/karyawan-master"><button class="btn btn-dark">Kembali</button></a></li>
                 </ol>
-            </div>  
+            </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -55,7 +55,7 @@
                             <label class="col-form-label">ID Karyawan</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="" value="<?php echo $random;?>" readonly
-                                @error('id_karyawan') is-invalid @enderror" name="id_karyawan" id="" value="{{old('id_karyawan')}}">
+                                @error('id_karyawan') is-invalid @enderror name="id_karyawan" id="" value="{{old('id_karyawan')}}">
                               </div>
                             <div class="text-danger">
                                 @error('id_karyawan')
@@ -65,7 +65,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Password</label>
-                            <input type="password" class="form-control" id="" @error('password') is-invalid @enderror" name="password" value="{{old('password')}}">
+                            <input type="password" class="form-control" id="" @error('password') is-invalid @enderror name="password" value="{{old('password')}}">
                             <div class="text-danger">
                                 @error('password')
                                     {{ $message }}
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Nama Karyawan</label>
-                            <input type="text" class="form-control" id="" @error('nm_karyawan') is-invalid @enderror" name="nm_karyawan" value="{{old('nm_karyawan')}}">
+                            <input type="text" class="form-control" id="" @error('nm_karyawan') is-invalid @enderror name="nm_karyawan" value="{{old('nm_karyawan')}}">
                             <div class="text-danger">
                                 @error('nm_karyawan')
                                     {{ $message }}
@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label">Nomor Telepon</label>
-                            <input type="text" class="form-control" id="" @error('no_telp') is-invalid @enderror" name="no_telp" value="{{old('no_telp')}}">
+                            <input type="text" class="form-control" id="" @error('no_telp') is-invalid @enderror name="no_telp" value="{{old('no_telp')}}">
                             <div class="text-danger">
                                 @error('no_telp')
                                     {{ $message }}
@@ -94,8 +94,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="col-form-label">Bagian</label>
-                            <select class="form-control select2 @error('kd_bagian_fk') is-invalid @enderror" style="width: 100%;" name="kd_bagian_fk">
-                                <option></option>
+                            <select class="form-control select2" @error('kd_bagian_fk') is-invalid @enderror style="width: 100%;" name="kd_bagian_fk">
+                                <option disabled selected>Silahkan pilih bagian</option>
                                 @foreach ($karyawan_m as $data)
                                 @if (old('kd_bagian_fk') == $data->kd_bagian)
                                     <option value="{{ $data->kd_bagian }}" selected>{{ $data->nm_bagian }}</option>
@@ -111,8 +111,22 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-form-label">Shift</label>
+                            <select class="form-control select2" @error('shift') is-invalid @enderror style="width: 100%;" name="shift">
+                              <option disabled selected>Silahkan pilih Shift</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                            </select>
+                            <div class="text-danger">
+                                @error('shift')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-form-label">Alamat</label>
-                            <textarea class="form-control" id="" rows="8" @error('alamat') is-invalid @enderror" name="alamat" value="{{old('alamat')}}">{{old('alamat')}}</textarea>
+                            <textarea class="form-control" id="" rows="8" @error('alamat') is-invalid @enderror name="alamat" value="{{old('alamat')}}">{{old('alamat')}}</textarea>
                             <div class="text-danger">
                                 @error('alamat')
                                     {{ $message }}

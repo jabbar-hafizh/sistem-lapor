@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PelaporModel;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class PelaporController extends Controller
 {
@@ -35,7 +36,7 @@ class PelaporController extends Controller
                 'id_jenis_keluhan_fk.required' => '*Pilih jenis keluhan',
                 'penjelasan_keluhan.required' => '*Harus diisi!',
                 'bukti_foto_keluhan.required' => '*Upload bukti foto',
-                
+
                 'nm_pengeluh.max' => '*Nama maksimal 50 karakter!',
                 'no_telp.max' => '*Nomor telpon maksimal 13 karakter!',
                 'penjelasan_keluhan.max' => '*Penjelasan maksimal 255 karakter!',
@@ -52,10 +53,11 @@ class PelaporController extends Controller
         $dataKeluhan = [
             'nm_pengeluh' => Request()->nm_pengeluh,
             'no_telp' => Request()->no_telp,
+            'id_keluhan' => Uuid::uuid4()->toString()
         ];
 
         $this->PelaporModel->addDataKeluhan($dataKeluhan);
-        
+
 
 
         $file = Request()->bukti_foto_keluhan;
@@ -63,7 +65,7 @@ class PelaporController extends Controller
         $file = $file->move(public_path('img'), $fileName);
 
         $dataDetilKeluhan = [
-            'id_keluhan_fk' => DB::getPdo()->lastInsertId(),
+            'id_keluhan_fk' => $dataKeluhan['id_keluhan'],
             'id_jenis_keluhan_fk' => Request()->id_jenis_keluhan_fk,
             'penjelasan_keluhan' => Request()->penjelasan_keluhan,
             'bukti_foto_keluhan' => $fileName,

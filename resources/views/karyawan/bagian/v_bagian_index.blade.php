@@ -1,5 +1,5 @@
 @php
-  $bagian = array('Customer Service', 'Supervisor Customer Service')
+  $bagian = array('Supervisor Customer Service')
 @endphp
 @if(!in_array(session()->get('bagian'), $bagian))
   <script>window.location = "/dashboard";</script>

@@ -21,7 +21,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         @if(session()->has('nama_karyawan') && session()->has('bagian'))
-          @if(session()->get('bagian') === 'Customer Service' || session()->get('Supervisor Customer Service'))
+          @if(session()->get('bagian') === 'Supervisor Customer Service')
             <li class="nav-item active">
               <a href="{{ url('bagian') }}" class="nav-link">
                 <i class="fas fa-circle nav-icon"></i>

@@ -38,7 +38,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="inputNama">Nama</label>
-                                    <input type="text" class="form-control @error('nm_pengeluh') is-invalid @enderror" name="nm_pengeluh" id="inputNama" placeholder="Masukkan Nama Anda" value="{{old('nm_pengeluh')}}">
+                                    <input type="text" class="form-control" @error('nm_pengeluh') is-invalid @enderror name="nm_pengeluh" id="inputNama" placeholder="Masukkan Nama Anda" value="{{old('nm_pengeluh')}}">
                                     <div class="text-danger">
                                         @error('nm_pengeluh')
                                             {{ $message }}
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputNoTelp">No. Telpon</label>
-                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="inputNoTelp" placeholder="Masukkan Nomor Telpon Anda" value="{{old('no_telp')}}">
+                                    <input type="text" class="form-control" @error('no_telp') is-invalid @enderror name="no_telp" id="inputNoTelp" placeholder="Masukkan Nomor Telpon Anda" value="{{old('no_telp')}}">
                                     <div class="text-danger">
                                         @error('no_telp')
                                             {{ $message }}
@@ -58,8 +58,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Jenis Keluhan</label>
-                                    <select class="form-control select2 @error('id_jenis_keluhan_fk') is-invalid @enderror" style="width: 100%;" name="id_jenis_keluhan_fk">
-                                        <option></option>
+                                    <select class="form-control select2" @error('id_jenis_keluhan_fk') is-invalid @enderror style="width: 100%;" name="id_jenis_keluhan_fk">
+                                        <option disabled selected>Silahkan pilih jenis keluhan</option>
                                         @foreach ($pelapor as $data)
                                         @if (old('id_jenis_keluhan_fk') == $data->id_jenis_keluhan)
                                             <option value="{{ $data->id_jenis_keluhan }}" selected>{{ $data->nm_keluhan }}</option>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPenjelasan">Penjelasan</label>
-                                    <textarea rows="5" type="text" class="form-control @error('penjelasan_keluhan') is-invalid @enderror" name="penjelasan_keluhan" id="inputPenjelasan" placeholder="Deskripsikan Penjelasan" value="{{old('penjelasan_keluhan')}}">{{old('penjelasan_keluhan')}}</textarea>
+                                    <textarea rows="5" type="text" class="form-control" @error('penjelasan_keluhan') is-invalid @enderror name="penjelasan_keluhan" id="inputPenjelasan" placeholder="Deskripsikan Penjelasan" value="{{old('penjelasan_keluhan')}}">{{old('penjelasan_keluhan')}}</textarea>
                                     <div class="text-danger">
                                         @error('penjelasan_keluhan')
                                             {{ $message }}
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="buktiFoto">Bukti Foto</label>
-                                    <input type="file" class="form-control-file @error('bukti_foto_keluhan') is-invalid @enderror" name="bukti_foto_keluhan" id="buktiFoto">
+                                    <input type="file" class="form-control-file" @error('bukti_foto_keluhan') is-invalid @enderror name="bukti_foto_keluhan" id="buktiFoto">
                                     <div class="text-danger">
                                         @error('bukti_foto_keluhan')
                                             {{ $message }}
@@ -96,7 +96,7 @@
                         </div>
                         <button class="btn btn-primary">Kirim</button>
                     </form>
-                </div>            
+                </div>
             </div>
         </div>
     </section>

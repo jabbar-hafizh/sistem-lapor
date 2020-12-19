@@ -1,5 +1,5 @@
 @php
-  $bagian = array('Customer Service', 'Supervisor Customer Service')
+  $bagian = array('Supervisor Customer Service')
 @endphp
 @if(!in_array(session()->get('bagian'), $bagian))
   <script>window.location = "/dashboard";</script>
@@ -35,7 +35,6 @@
               <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Bagian</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -47,12 +46,10 @@
                 <tr>
                   <td>{{ $no++ }}</td>
                   <td>{{ $row->nm_keluhan}}</td>
-                  <td>{{ $row->bagian->nm_bagian }}</td>
                   <td>
                     <a class="editJenisKeluhan"
                       data-id_jenis_keluhan="{{ $row->id_jenis_keluhan }}"
-                      data-nama="{{ $row->nm_keluhan }}"
-                      data-id_bagian=" $row->bagian->kd_bagian">
+                      data-nama="{{ $row->nm_keluhan }}">
                       <button class="btn btn-info">Ubah</button>
                     </a>
                     <a
@@ -106,14 +103,6 @@
                       <label for="jenis_keluhan" class="col-form-label">Jenis Keluhan</label>
                       <input type="text" class="form-control" id="jenis_keluhan">
                     </div>
-                    <div class="form-group">
-                      <label for="id_bagian">Bagian</label>
-                      <select class="form-control js-states select2_bagian" id="id_bagian">
-                        @foreach($dataBagian as $row)
-                          <option value="{{$row->kd_bagian}}">{{$row->nm_bagian}}</option>
-                        @endforeach
-                      </select>
-                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="submit" id="btn-edit" class="btn btn-primary">Ya</button>
@@ -138,14 +127,6 @@
                     <div class="form-group">
                       <label for="jenis_keluhan" class="col-form-label">Jenis Keluhan</label>
                       <input type="text" class="form-control" id="add_jenis_keluhan">
-                    </div>
-                    <div class="form-group">
-                      <label for="id_bagian">Bagian</label>
-                      <select class="form-control js-states select2_bagian" id="add_id_bagian">
-                        @foreach($dataBagian as $row)
-                          <option value="{{$row->kd_bagian}}">{{$row->nm_bagian}}</option>
-                        @endforeach
-                      </select>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -189,7 +170,6 @@ $(document).ready( function () {
     // Dari Data Table
     const idJenisKeluhan = $(this).data('id_jenis_keluhan')
     const namaKeluhan = $(this).data('nama')
-    const idBagian = $(this).data('id_bagian')
 
     // Ke Modal
     $('#id_jenis_keluhan').val(idJenisKeluhan)
@@ -204,12 +184,10 @@ $(document).ready( function () {
 
     const idJenisKeluhan = $('#id_jenis_keluhan').val()
     const jenisKeluhan = $('#jenis_keluhan').val()
-    const idBagian = $('#id_bagian').val()
 
     try {
       if (!idJenisKeluhan || typeof idJenisKeluhan !== 'string') alert('Id Jenis Keluhan tidak boleh string kosong')
       if (!jenisKeluhan || typeof jenisKeluhan !== 'string') alert('Jenis Keluhan tidak boleh string kosong')
-      if (!idBagian || typeof idBagian !== 'string') alert('Bagian tidak boleh string kosong')
 
       $.ajaxSetup({
         headers:
@@ -223,8 +201,7 @@ $(document).ready( function () {
         async: true,
         data: {
           id_jenis_keluhan: idJenisKeluhan,
-          nama_keluhan: jenisKeluhan,
-          kode_bagian: idBagian
+          nama_keluhan: jenisKeluhan
         },
         error: function (err) {
           console.error(err)
@@ -252,11 +229,9 @@ $(document).ready( function () {
     e.preventDefault()
 
     const jenisKeluhan = $('#add_jenis_keluhan').val()
-    const idBagian = $('#add_id_bagian').val()
 
     try {
       if (!jenisKeluhan || typeof jenisKeluhan !== 'string') alert('Jenis Keluhan tidak boleh string kosong')
-      if (!idBagian || typeof idBagian !== 'string') alert('Bagian tidak boleh string kosong')
 
       $.ajaxSetup({
         headers:
@@ -269,8 +244,7 @@ $(document).ready( function () {
         dataType: 'json',
         async: true,
         data: {
-          nama_keluhan: jenisKeluhan,
-          kode_bagian: idBagian
+          nama_keluhan: jenisKeluhan
         },
         error: function (err) {
           console.error(err)

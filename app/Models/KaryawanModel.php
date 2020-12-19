@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class KaryawanModel extends Model
 {
     protected $table = 'karyawan';
-    protected $fillable = ['id_karyawan', 'nm_karyawan', 'alamat', 'no_telp', 'kd_bagian_fk', 'password'];
+    protected $fillable = ['id_karyawan', 'nm_karyawan', 'alamat', 'no_telp', 'kd_bagian_fk', 'password', 'shift'];
     protected $primaryKey = 'id_karyawan';
     public $incrementing = false;
     protected $keyType = 'string';
@@ -80,9 +80,36 @@ class KaryawanModel extends Model
             'status_keluhan',
             'nm_karyawan',
             'karyawan.no_telp as no_telp2',
+            'tingkat_keluhan',
+            'shift'
         )
         ->where('waktu_keluhan', '>=', $startDate)
         ->where('waktu_keluhan', '<=', $endDate)
+        ->get();
+    }
+
+    public function dataKeluhan2($startDate, $endDate, $namaKaryawan){
+        return DB::table('keluhan')
+        ->leftjoin('detil_keluhan', 'keluhan.id_keluhan', '=', 'detil_keluhan.id_keluhan_fk')
+        ->leftjoin('jenis_keluhan', 'detil_keluhan.id_jenis_keluhan_fk', '=', 'jenis_keluhan.id_jenis_keluhan')
+        ->leftjoin('karyawan', 'keluhan.id_karyawan_fk', '=', 'karyawan.id_karyawan')
+        ->orderBy('keluhan.waktu_keluhan', 'desc')
+        // ->where('status_keluhan', 'Baru')
+        ->select(
+            'nm_keluhan',
+            'penjelasan_keluhan',
+            'waktu_keluhan',
+            'nm_pengeluh',
+            'keluhan.no_telp as no_telp1',
+            'status_keluhan',
+            'nm_karyawan',
+            'karyawan.no_telp as no_telp2',
+            'tingkat_keluhan',
+            'shift'
+        )
+        ->where('waktu_keluhan', '>=', $startDate)
+        ->where('waktu_keluhan', '<=', $endDate)
+        ->where('nm_karyawan', '=', $namaKaryawan)
         ->get();
     }
 }
