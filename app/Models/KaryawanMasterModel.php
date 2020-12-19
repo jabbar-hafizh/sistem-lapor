@@ -40,4 +40,11 @@ class KaryawanMasterModel extends Model
     ->where('id_karyawan', $id_karyawan)
     ->delete();
   }
+
+  public function filterKaryawan($tmpBagian) {
+    return DB::table('karyawan')
+      ->join('bagian', 'karyawan.kd_bagian_fk', '=', 'bagian.kd_bagian')
+      ->where('nm_bagian', $tmpBagian)
+      ->get();
+  }
 }

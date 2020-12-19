@@ -35,7 +35,7 @@
       <div class="card">
         <div class="card-body">
           @php
-            $bagian = array('Customer Service', 'Supervisor Customer Service')
+            $bagian = array('Supervisor Customer Service')
           @endphp
           @if(in_array(session()->get('bagian'), $bagian))
             {{-- jika belum ada penyelesaian --}}
@@ -74,16 +74,16 @@
                         </div>
                         <label class="col-sm-3 col-form-label">Karyawan Petugas</label>
                         <div class="col-sm-9">
-                            <select class="form-control select2 @error('id_karyawan') is-invalid @enderror" style="width: 100%;" name="id_karyawan">
-                            <option value="{{$karyawan->id_karyawan}}">{{$karyawan->nm_karyawan}}</option>
-                                @foreach ($karyawan2 as $data)
-                                @if (old('id_karyawan') === $data->id_karyawan)
-                                    <option value="{{ $data->id_karyawan }}" selected>{{ $data->nm_karyawan }}</option>
-                                @else
-                                    <option value="{{ $data->id_karyawan }}">{{ $data->nm_karyawan }}</option>
-                                @endif
-                                @endforeach
-                            </select>
+                          <select class="form-control select2" @error('id_karyawan') is-invalid @enderror style="width: 100%;" name="id_karyawan">
+                          <option value="{{$karyawan->id_karyawan}}">{{$karyawan->nm_karyawan}}</option>
+                            @foreach ($karyawan2 as $data)
+                              @if (old('id_karyawan') === $data->id_karyawan)
+                                  <option value="{{ $data->id_karyawan }}" selected>{{ $data->nm_karyawan }}</option>
+                              @else
+                                  <option value="{{ $data->id_karyawan }}">{{ $data->nm_karyawan }}</option>
+                              @endif
+                            @endforeach
+                          </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -150,9 +150,7 @@
               @endif
             @endif
 
-
-
-            {{-- diproses -> ditangani --}}
+            {{-- diproses ditangani --}}
             @if(!in_array(session()->get('bagian'), $bagian))
                 {{-- dan jika statusnya adalah diproses --}}
                 @if ($karyawan->status_keluhan == 'Diproses')
@@ -202,8 +200,7 @@
                 @endif
             @endif
 
-
-            {{-- ditangani -> sudah ditangani --}}
+            {{-- ditangani sudah ditangani --}}
             {{-- dan jika statusnya adalah ditangani --}}
             @if(!in_array(session()->get('bagian'), $bagian))
               @if ($karyawan->status_keluhan == 'Ditangani')
@@ -303,7 +300,7 @@
                             </div>
                         @endif
                     </div>
-                </form> 
+                </form>
               @endif
             @endif
         </div>
