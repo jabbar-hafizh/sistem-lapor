@@ -55,7 +55,7 @@
             </form>
           @else
             {{-- @if(session()->get('id_karyawan') === $data->id_karyawan_fk) --}}
-            <form action="/export2" class="form-group">
+            <form action="/export" class="form-group">
               @php
                   $now = date("Y-m-d");
               @endphp

@@ -60,6 +60,10 @@
             <div class="col-sm-9">
               <input type="text" readonly class="form-control-plaintext" value="{{$karyawan->no_telp}}">
             </div>
+            @php
+              $bagian = array('Supervisor Customer Service')
+            @endphp
+            @if(in_array(session()->get('bagian'), $bagian))
             <label class="col-sm-3 col-form-label">Tingkat Keluhan</label>
             <div class="col-sm-9">
               <select class="form-control select2 ringan_tingkat_keluhan" style="width: 100%;" name="ringan_tingkat_keluhan" id="ringan_tingkat_keluhan" required>
@@ -79,6 +83,7 @@
             <div class="col-sm-12">
               <button class="btn btn-dark btnSelesai" type="button" id="btnSelesai">Selesai</button>
             </div>
+            @endif
           </div>
 
           <!-- Keluhan Berat -->
