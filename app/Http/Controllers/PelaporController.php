@@ -58,10 +58,8 @@ class PelaporController extends Controller
 
         $this->PelaporModel->addDataKeluhan($dataKeluhan);
 
-
-
         $file = Request()->bukti_foto_keluhan;
-        $fileName = DB::getPdo()->lastInsertId().'.'.$file->extension();
+        $fileName = 'KLH-'.time().'.'.$file->extension();
         $file = $file->move(public_path('img'), $fileName);
 
         $dataDetilKeluhan = [

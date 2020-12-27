@@ -23,9 +23,10 @@ class KaryawanModel extends Model
 
     public function allData(){
         return DB::table('keluhan')
-        ->join('detil_keluhan', 'keluhan.id_keluhan', '=', 'detil_keluhan.id_keluhan_fk')
-        ->join('jenis_keluhan', 'detil_keluhan.id_jenis_keluhan_fk', '=', 'jenis_keluhan.id_jenis_keluhan')
-        // ->join('karyawan', 'keluhan.id_karyawan_fk', '=', 'karyawan.id_karyawan')
+        ->leftjoin('detil_keluhan', 'keluhan.id_keluhan', '=', 'detil_keluhan.id_keluhan_fk')
+        ->leftjoin('jenis_keluhan', 'detil_keluhan.id_jenis_keluhan_fk', '=', 'jenis_keluhan.id_jenis_keluhan')
+        ->leftjoin('karyawan', 'keluhan.id_karyawan_fk', '=', 'karyawan.id_karyawan')
+        ->orderBy('keluhan.waktu_keluhan', 'desc')
         // ->where('status_keluhan', 'Baru')
         ->get();
     }

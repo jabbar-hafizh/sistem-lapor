@@ -55,7 +55,7 @@
             </form>
           @else
             {{-- @if(session()->get('id_karyawan') === $data->id_karyawan_fk) --}}
-            <form action="/export2" class="form-group">
+            <form action="/export" class="form-group">
               @php
                   $now = date("Y-m-d");
               @endphp
@@ -72,9 +72,10 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama</th>
+                <th>Pelapor</th>
                 <th>Keluhan</th>
                 <th>Waktu</th>
+                <th>Penanggung Jawab</th>
                 <th>Status</th>
                 <th>Aksi</th>
               </tr>
@@ -84,79 +85,47 @@
                 $no = 1;
               @endphp
               @foreach ($karyawan as $data)
-                @if(session()->get('bagian') === 'Supervisor Customer Service')
-                  <tr>
-                    <td>{{ $no++ }}</td>
-                    <td>{{ $data->nm_pengeluh}}</td>
-                    <td>{{ $data->nm_keluhan}}</td>
-                    <td>{{ $data->waktu_keluhan}}</td>
-                    @if ($data->status_keluhan == 'Baru')
-                      <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetil/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Diproses')
-                      <td><span class="btn btn-success" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary" disabled>Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Ditangani')
-                      <td><span class="btn btn-secondary" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Sudah Ditangani')
-                      <td><span class="btn btn-danger" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Selesai')
-                      <td><span class="btn btn-dark" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
+                <tr>
+                  <td>{{ $no++ }}</td>
+                  <td>{{ $data->nm_pengeluh}}</td>
+                  <td>{{ $data->nm_keluhan}}</td>
+                  <td>{{ $data->waktu_keluhan}}</td>
+                  <td>
+                    @if ($data->nm_karyawan)
+                      {{ $data->nm_karyawan}}
                     @else
-                      <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                      -
                     @endif
-                  </tr>
-                @else
-                  @if(session()->get('id_karyawan') === $data->id_karyawan_fk)
-                    <tr>
-                      <td>{{ $no++ }}</td>
-                      <td>{{ $data->nm_pengeluh}}</td>
-                      <td>{{ $data->nm_keluhan}}</td>
-                      <td>{{ $data->waktu_keluhan}}</td>
-                    @if ($data->status_keluhan == 'Baru')
-                      <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetil/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Diproses')
-                      <td><span class="btn btn-success" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Ditangani')
-                      <td><span class="btn btn-secondary" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Sudah Ditangani')
-                      <td><span class="btn btn-danger" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @elseif ($data->status_keluhan == 'Selesai')
-                      <td><span class="btn btn-dark" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                      <td>
-                        <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
-                      </td>
-                    @else
-                      <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
-                    @endif
-                    </tr>
+                  </td>
+                  @if ($data->status_keluhan == 'Baru')
+                    <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                    <td>
+                      <a href="/karyawan/laporan/laporandetil/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                    </td>
+                  @elseif ($data->status_keluhan == 'Diproses')
+                    <td><span class="btn btn-success" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                    <td>
+                      <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary" disabled>Detail</button></a>
+                    </td>
+                  @elseif ($data->status_keluhan == 'Ditangani')
+                    <td><span class="btn btn-secondary" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                    <td>
+                      <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                    </td>
+                  @elseif ($data->status_keluhan == 'Sudah Ditangani')
+                    <td><span class="btn btn-danger" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                    <td>
+                      <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                    </td>
+                  @elseif ($data->status_keluhan == 'Selesai')
+                    <td><span class="btn btn-dark" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
+                    <td>
+                      <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                    </td>
+                  @else
+                    <td><span class="btn btn-warning" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
                   @endif
-                @endif
+                </tr>
               @endforeach
             </tbody>
           </table>
