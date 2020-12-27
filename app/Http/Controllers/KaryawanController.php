@@ -83,7 +83,8 @@ class KaryawanController extends Controller
 
   public function export(){
       $startDate = Request()->startdate;
-      $endDate = Request()->enddate;
+      $endDateBefore = Request()->enddate;
+      $endDate = date('Y-m-d', strtotime( $endDateBefore . " +1 days"));
       $this->KaryawanModel->dataKeluhan($startDate, $endDate);
       return Excel::download(new KeluhanExport($startDate, $endDate), 'Laporan Keluhan '.date('d-m-Y').'.xlsx');
   }
