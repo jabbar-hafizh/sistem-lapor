@@ -76,7 +76,7 @@
                                             <input type="text" class="form-control @error('nm_pengeluh') is-invalid @enderror" name="nm_pengeluh" id="inputNama" placeholder="Masukkan Nama Anda" value="{{old('nm_pengeluh')}}">
                                             <div class="text-danger">
                                                 @error('nm_pengeluh')
-                                                    {{ $message }}
+                                                  {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                             <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="inputNoTelp" placeholder="Masukkan Nomor Telpon Anda" value="{{old('no_telp')}}">
                                             <div class="text-danger">
                                                 @error('no_telp')
-                                                    {{ $message }}
+                                                  {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
@@ -94,18 +94,18 @@
                                         <div class="form-group">
                                             <label>Jenis Keluhan</label>
                                             <select class="form-control select2 @error('id_jenis_keluhan_fk') is-invalid @enderror" style="width: 100%;" name="id_jenis_keluhan_fk">
-                                                <option></option>
+                                                <option disabled selected>Silahkan pilih jenis keluhan</option>
                                                 @foreach ($jenis_keluhan as $data)
-                                                @if (old('id_jenis_keluhan_fk') == $data->id_jenis_keluhan)
+                                                  @if (old('id_jenis_keluhan_fk') == $data->id_jenis_keluhan)
                                                     <option value="{{ $data->id_jenis_keluhan }}" selected>{{ $data->nm_keluhan }}</option>
-                                                @else
+                                                  @else
                                                     <option value="{{ $data->id_jenis_keluhan }}">{{ $data->nm_keluhan }}</option>
-                                                @endif
+                                                  @endif
                                                 @endforeach
                                             </select>
                                             <div class="text-danger">
                                                 @error('id_jenis_keluhan_fk')
-                                                    {{ $message }}
+                                                  {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                             <textarea rows="5" type="text" class="form-control @error('penjelasan_keluhan') is-invalid @enderror" name="penjelasan_keluhan" id="inputPenjelasan" placeholder="Deskripsikan Penjelasan" value="{{old('penjelasan_keluhan')}}">{{old('penjelasan_keluhan')}}</textarea>
                                             <div class="text-danger">
                                                 @error('penjelasan_keluhan')
-                                                    {{ $message }}
+                                                  {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                             <input type="file" class="form-control-file @error('bukti_foto_keluhan') is-invalid @enderror" name="bukti_foto_keluhan" id="buktiFoto">
                                             <div class="text-danger">
                                                 @error('bukti_foto_keluhan')
-                                                    {{ $message }}
+                                                  {{ $message }}
                                                 @enderror
                                             </div>
                                         </div>
@@ -131,7 +131,7 @@
                                 </div>
                                 <button class="btn btn-primary bg-navy">Kirim</button>
                             </form>
-                        </div>            
+                        </div>
                     </div>
                 </div>
             </section>
@@ -140,7 +140,7 @@
         {{-- footer --}}
         <footer class="main-footer bg-navy text-center">
             <strong>&copy; 2020</strong>
-        </footer> 
+        </footer>
 
         <aside class="control-sidebar control-sidebar-dark">
         {{-- Control sidebar content goes here --}}
