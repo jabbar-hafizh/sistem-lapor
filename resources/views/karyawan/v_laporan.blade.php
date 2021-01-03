@@ -105,7 +105,11 @@
                   @elseif ($data->status_keluhan == 'Diproses')
                     <td><span class="btn btn-success" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
                     <td>
+                      @if(session()->get('bagian') === 'Customer Service' || session()->get('bagian') === 'Supervisor Customer Service')
                       <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary" disabled>Detail</button></a>
+                      @else
+                      <a href="/karyawan/laporan/laporandetilbb/{{$data->id_keluhan}}"><button class="btn btn-primary">Detail</button></a>
+                      @endif
                     </td>
                   @elseif ($data->status_keluhan == 'Ditangani')
                     <td><span class="btn btn-secondary" style="cursor: default;">{{ $data->status_keluhan}}</span></td>
